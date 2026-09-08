@@ -5,201 +5,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Special Surprise! ✨</title>
     <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { box-sizing: border-box; font-family: sans-serif; }
         body {
             margin: 0; padding: 0;
-            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: gradientBG 10s ease infinite;
             display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; overflow-x: hidden; text-align: center;
+            min-height: 100vh; text-align: center;
         }
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
         }
         .card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px 20px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            width: 90%; max-width: 380px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.95); padding: 25px;
+            border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 90%; max-width: 360px;
         }
         .hidden { display: none !important; }
-        h2 { color: #ff477e; margin-bottom: 15px; font-size: 22px; }
-        p { color: #555; line-height: 1.5; }
-        .sticker { font-size: 50px; margin: 15px auto; display: block; }
-        
+        h2 { color: #ff477e; margin-bottom: 15px; }
+        p { color: #555; font-size: 15px; }
+        .sticker { font-size: 50px; margin: 15px; }
         button {
-            padding: 12px 28px; font-size: 16px; border: none;
-            border-radius: 25px; cursor: pointer; font-weight: bold;
-            transition: transform 0.2s; margin: 10px;
+            padding: 12px 24px; font-size: 16px; border: none;
+            border-radius: 25px; cursor: pointer; font-weight: bold; margin: 8px;
         }
-        .btn-yes { background: #ff477e; color: white; box-shadow: 0 4px 15px rgba(255,71,126,0.4); }
+        .btn-yes { background: #ff477e; color: white; }
         .btn-no { background: #6c757d; color: white; }
         .btn-back { background: #4a90e2; color: white; }
-        .btn-next { background: #ff758f; color: white; width: 100%; margin-top: 15px; }
-
-        .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .btn-next { background: #ff758f; color: white; width: 100%; }
+        .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 15px 0; }
         .cute-item {
-            background: #fff0f3; padding: 15px 5px; border-radius: 15px;
-            border: 2px dashed #ffb3c1; cursor: pointer; transition: 0.3s;
+            background: #fff0f3; padding: 12px 5px; border-radius: 12px;
+            border: 2px dashed #ffb3c1; cursor: pointer;
         }
-        .cute-item:hover { transform: translateY(-5px); background: #ffe5ec; }
-        .item-icon { font-size: 35px; display: block; margin-bottom: 5px; }
-        .item-label { font-size: 11px; font-weight: bold; color: #ff477e; }
-        .completed { opacity: 0.6; border-style: solid; background: #e8f5e9; }
-
-        .google-box { background: white; border-radius: 10px; padding: 15px; border: 1px solid #ddd; text-align: left; }
-        .google-logo { font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 10px; }
-        .google-logo span:nth-child(1) { color: #4285F4; } .google-logo span:nth-child(2) { color: #EA4335; }
-        .google-logo span:nth-child(3) { color: #FBBC05; } .google-logo span:nth-child(4) { color: #4285F4; }
-        .google-logo span:nth-child(5) { color: #34A853; } .google-logo span:nth-child(6) { color: #EA4335; }
-        .search-bar {
-            width: 100%; border: 1px solid #dfe1e5; padding: 10px 15px;
-            border-radius: 24px; font-size: 14px; margin-bottom: 15px; outline: none; background: #f8f9fa;
-        }
-        .photo-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-height: 200px; overflow-y: auto; }
-        .gallery-img { width: 100%; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
-        .lyrics-box { background: #222; color: #1DB954; padding: 15px; border-radius: 15px; font-family: monospace; font-size: 14px; margin: 15px 0; min-height: 60px; display: flex; align-items: center; justify-content: center; }
+        .completed { opacity: 0.5; background: #e8f5e9; border-style: solid; }
+        .item-icon { font-size: 30px; display: block; }
+        .item-label { font-size: 11px; color: #ff477e; font-weight: bold; }
+        .google-box { background: white; border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: left; }
+        .search-bar { width: 100%; border: 1px solid #ccc; padding: 8px; border-radius: 20px; margin-bottom: 10px; }
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .gallery img { width: 100%; height: 90px; object-fit: cover; border-radius: 5px; }
+        .lyrics { background: #222; color: #1DB954; padding: 15px; border-radius: 12px; font-family: monospace; min-height: 50px; }
     </style>
 </head>
 <body>
 
-    <!-- SCREEN 1: Ask Prompt -->
-    <div id="screen1" class="card">
+    <!-- SCREEN 1: Ask -->
+    <div id="scr1" class="card">
         <h2>Hey! I made something for you, do you wanna see it? 👀💖</h2>
-        <div class="sticker">🎁</div> 
-        <button class="btn-yes" onclick="showScreen('screen3_yes')">Yes! 😍</button>
-        <button class="btn-no" onmouseover="triggerNoPrank()" onclick="triggerNoPrank()">No 🙄</button>
+        <div class="sticker">🎁</div>
+        <button class="btn-yes" onclick="go('scr3')">Yes! 😍</button>
+        <button class="btn-no" onclick="go('scr2')">No 🙄</button>
     </div>
 
-    <!-- SCREEN 2: If No (Seriously?) -->
-    <div id="screen2_no" class="card hidden">
+    <!-- SCREEN 2: No Prank -->
+    <div id="scr2" class="card hidden">
         <h2>Seriously? How dare you, hmph! 😡😤</h2>
         <div class="sticker">😾</div>
-        <button class="btn-back" onclick="showScreen('screen1')">Go Back 🥺</button>
+        <button class="btn-back" onclick="go('scr1')">Go Back 🥺</button>
     </div>
 
-    <!-- SCREEN 3: If Yes (Good Gurl) -->
-    <div id="screen3_yes" class="card hidden">
+    <!-- SCREEN 3: Good Girl -->
+    <div id="scr3" class="card hidden">
         <h2>Good gurl! 🥳🐶</h2>
         <div class="sticker">🐶</div>
-        <button class="btn-next" onclick="showScreen('screen4_bday')">Click to continue ✨</button>
+        <button class="btn-next" onclick="go('scr4')">Click to continue ✨</button>
     </div>
 
-    <!-- SCREEN 4: Happy Birthday Template -->
-    <div id="screen4_bday" class="card hidden">
+    <!-- SCREEN 4: Birthday Cover -->
+    <div id="scr4" class="card hidden">
         <h2>🎂 HAPPY BIRTHDAY! 🎂</h2>
         <div class="sticker">👑</div>
-        <p>Wishing you the most magical day ever, my best friend! You mean the absolute world to me.</p>
-        <button class="btn-next" onclick="showScreen('screen5_items')">Go to Next Page ➡️</button>
+        <p>Wishing you the most magical day ever, my best friend! You mean the world to me.</p>
+        <button class="btn-next" onclick="go('scr5')">Go to Next Page ➡️</button>
     </div>
 
-    <!-- SCREEN 5: Three Cute Items Menu -->
-    <div id="screen5_items" class="card hidden">
-        <h2>Click on each cute item one by one! 👇✨</h2>
+    <!-- SCREEN 5: Items Menu -->
+    <div id="scr5" class="card hidden">
+        <h2>Click each item one by one! 👇✨</h2>
         <div class="items-grid">
-            <div class="cute-item" id="item1" onclick="openItem('photo_page', 'item1')">
-                <span class="item-icon">🖼️</span>
-                <span class="item-label">Moments</span>
+            <div class="cute-item" id="it1" onclick="openIt('sub1', 'it1')">
+                <span class="item-icon">🖼️</span><span class="item-label">Moments</span>
             </div>
-            <div class="cute-item" id="item2" onclick="openItem('wishes_page', 'item2')">
-                <span class="item-icon">📁</span>
-                <span class="item-label">Wishes</span>
+            <div class="cute-item" id="it2" onclick="openIt('sub2', 'it2')">
+                <span class="item-icon">📁</span><span class="item-label">Wishes</span>
             </div>
-            <div class="cute-item" id="item3" onclick="openItem('music_page', 'item3')">
-                <span class="item-icon">🎵</span>
-                <span class="item-label">Our Song</span>
+            <div class="cute-item" id="it3" onclick="openIt('sub3', 'it3')">
+                <span class="item-icon">🎵</span><span class="item-label">Our Song</span>
             </div>
         </div>
-        <button id="finalWishBtn" class="btn-next hidden" onclick="showScreen('screen6_final')">See Final Wish 💖</button>
+        <button id="finalBtn" class="btn-next hidden" onclick="go('scr6')">See Final Wish 💖</button>
     </div>
 
-    <!-- SUBPAGE 1: Google Template Photos -->
-    <div id="photo_page" class="card hidden">
+    <!-- SUBPAGE 1: Google Pics -->
+    <div id="sub1" class="card hidden">
         <div class="google-box">
-            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div style="font-weight:bold; color:#4285F4; margin-bottom:5px;">Google</div>
             <input type="text" class="search-bar" value="Moments of us" readonly>
-            <div class="photo-gallery">
-                <img src="photo.jpg" class="gallery-img" onerror="this.src='https://unsplash.com'">
-                <img src="photo.jpg" class="gallery-img" onerror="this.src='https://unsplash.com'">
+            <div class="gallery">
+                <img src="photo.jpg" onerror="this.src='https://unsplash.com'">
+                <img src="photo.jpg" onerror="this.src='https://unsplash.com'">
             </div>
         </div>
-        <button class="btn-next" onclick="closeSubpage()">Done Menu Back 🔙</button>
+        <button class="btn-next" style="margin-top:10px;" onclick="go('scr5')">Back to Menu 🔙</button>
     </div>
 
-    <!-- SUBPAGE 2: Birthday Wishes & Prayers File -->
-    <div id="wishes_page" class="card hidden">
-        <h2>📁 Birthday Blessings & Prayers</h2>
+    <!-- SUBPAGE 2: Wishes Text -->
+    <div id="sub2" class="card hidden">
+        <h2>📁 Blessings & Prayers</h2>
         <div class="sticker">🕊️</div>
-        <p style="text-align: left; background: white; padding: 15px; border-radius: 10px; border: 1px solid #ffb3c1; font-size: 14px;">
-            "I pray that this year brings you infinite joy, good health, and success in everything you do. Thank you for being the one person I can always depend on. May all your secret wishes come true today!" ✨❤️
+        <p style="text-align:left; background:white; padding:10px; border-radius:8px; border:1px solid #ffb3c1;">
+            "I pray this year brings you infinite joy and success. Thank you for being the one person I can always depend on!" ❤️
         </p>
-        <button class="btn-next" onclick="closeSubpage()">Done Menu Back 🔙</button>
+        <button class="btn-next" onclick="go('scr5')">Back to Menu 🔙</button>
     </div>
 
-    <!-- SUBPAGE 3: Music Player -->
-    <div id="music_page" class="card hidden">
-        <h2>🎵 You Can Count on Me</h2>
+    <!-- SUBPAGE 3: Music Lyrics -->
+    <div id="sub3" class="card hidden">
+        <h2>🎵 Count on Me</h2>
         <div class="sticker">📻</div>
-        <div class="lyrics-box" id="lyrics">🎵 "If you ever find yourself stuck in the middle of the sea..." 🎵</div>
-        <button class="btn-next" onclick="closeSubpage()">Done Menu Back 🔙</button>
+        <div class="lyrics" id="lyrBox">If you ever find yourself stuck in the middle of the sea... 🌊</div>
+        <button class="btn-next" style="margin-top:10px;" onclick="go('scr5')">Back to Menu 🔙</button>
     </div>
 
-    <!-- SCREEN 6: Final Cute Wish -->
-    <div id="screen6_final" class="card hidden">
+    <!-- SCREEN 6: Final Page -->
+    <div id="scr6" class="card hidden">
         <h2>✨ Final Special Wish ✨</h2>
         <div class="sticker">💝</div>
-        <p>No matter where life takes us, remember that you will always have me by your side. Happy Birthday to my favorite human! I love you! 💕🎉</p>
+        <p>No matter where life takes us, you will always have me by your side. Happy Birthday! I love you! 💕🎉</p>
     </div>
 
     <script>
-        let clickedItems = new Set();
-        let lyricsInterval = null;
+        let clicks = new Set();
+        let loop = null;
 
-        function showScreen(screenId) {
-            // Instantly hide all screens using a loop
-            const screens = ['screen1', 'screen2_no', 'screen3_yes', 'screen4_bday', 'screen5_items', 'photo_page', 'wishes_page', 'music_page', 'screen6_final'];
-            screens.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.classList.add('hidden');
+        function go(id) {
+            ['scr1', 'scr2', 'scr3', 'scr4', 'scr5', 'sub1', 'sub2', 'sub3', 'scr6'].forEach(s => {
+                document.getElementById(s).classList.add('hidden');
             });
-            
-            // Clear music loop if moving away from music page
-            if (screenId !== 'music_page' && lyricsInterval) {
-                clearInterval(lyricsInterval);
-            }
-
-            // Show current screen
-            document.getElementById(screenId).classList.remove('hidden');
+            if (loop) clearInterval(loop);
+            document.getElementById(id).classList.remove('hidden');
+            if (clicks.size === 3) document.getElementById('finalBtn').classList.remove('hidden');
         }
 
-        function triggerNoPrank() {
-            showScreen('screen2_no');
-        }
-
-        function openItem(pageId, itemId) {
-            clickedItems.add(itemId);
-            document.getElementById(itemId).classList.add('completed');
-            showScreen(pageId);
-            
-            if(pageId === 'music_page') {
-                playLyricsAnimation();
-            }
-        }
-
-        function closeSubpage() {
-            showScreen('screen5_items');
-            if (clickedItems.size === 3) {
-                document.getElementById('finalWishBtn').classList.remove('hidden');
+        function openIt(subId, itId) {
+            clicks.add(itId);
+            document.getElementById(itId).classList.add('completed');
+            go(subId);
+            if(subId === 'sub3') {
+                const txt = [
+                    "If you ever find yourself stuck in the middle of the sea... 🌊",
+                    "I'll sail the world to find you ⛵",
+                    "If you ever find yourself lost in the dark... 🌌",
+                    "I'll be the light to guide you 💡",
+                    "You can count on me like 1, 2, 3... I'll be there! 🌟"
+                ];
+                let i = 0;
+                loop = setInterval(() => {
+                    i = (i + 1) % txt.length;
+                    document.getElementById('lyrBox').innerText = txt[i];
+                }, 2500);
             }
         }
-
-        function playLyricsAnimation() {
-            const lyricsText = [
-                "🎵 If you ever find yourself stuck in the middle of the sea... 🌊",
-                "🎵 I'll sail the world to find you ⛵",
+    </script>
+</body>
+</html>
