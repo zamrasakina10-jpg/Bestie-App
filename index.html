@@ -1,118 +1,193 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Bestie! ✨</title>
+    <title>A Special Surprise! ✨</title>
     <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            text-align: center;
+            margin: 0; padding: 0;
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; overflow-x: hidden; text-align: center;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 85%;
-            max-width: 350px;
-            transition: all 0.5s ease;
-        }
-        h2 { color: #ff477e; margin-bottom: 20px; }
-        button {
-            padding: 12px 25px;
-            font-size: 16px;
-            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px 20px;
             border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
-            margin: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            width: 90%; max-width: 380px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            animation: popIn 0.5s ease-out;
         }
-        .btn-yes { background-color: #ff477e; color: white; }
-        .btn-no { background-color: #6c757d; color: white; position: relative; }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .hidden { display: none !important; }
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #ff758f;
-            margin-bottom: 15px;
+        h2 { color: #ff477e; margin-bottom: 15px; font-size: 22px; }
+        p { color: #555; line-height: 1.5; }
+        .sticker { width: 120px; height: 120px; margin: 15px auto; display: block; object-fit: contain; }
+        
+        /* Buttons */
+        button {
+            padding: 12px 28px; font-size: 16px; border: none;
+            border-radius: 25px; cursor: pointer; font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s; margin: 10px;
         }
-        /* Candle Styling */
-        .candle-container { cursor: pointer; margin: 20px auto; width: 60px; height: 120px; position: relative; }
-        .candle { background: #ffb3c1; width: 30px; height: 80px; position: absolute; bottom: 0; left: 15px; border-radius: 5px; }
-        .flame {
-            background: #ffbc42;
-            width: 16px;
-            height: 26px;
-            border-radius: 50% 50% 20% 20%;
-            position: absolute;
-            top: 10px;
-            left: 22px;
-            box-shadow: 0 0 10px #ffbc42;
-            animation: flicker 0.1s infinite alternate;
+        .btn-yes { background: #ff477e; color: white; box-shadow: 0 4px 15px rgba(255,71,126,0.4); }
+        .btn-yes:hover { transform: scale(1.05); }
+        .btn-no { background: #6c757d; color: white; position: relative; }
+        .btn-back { background: #4a90e2; color: white; }
+        .btn-next { background: #ff758f; color: white; width: 100%; margin-top: 15px; }
+
+        /* Multi-choice Items Grid */
+        .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .cute-item {
+            background: #fff0f3; padding: 15px 5px; border-radius: 15px;
+            border: 2px dashed #ffb3c1; cursor: pointer; transition: 0.3s;
         }
-        @keyframes flicker { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        .cute-item:hover { transform: translateY(-5px); background: #ffe5ec; }
+        .item-icon { font-size: 35px; display: block; margin-bottom: 5px; }
+        .item-label { font-size: 11px; font-weight: bold; color: #ff477e; }
+        .completed { opacity: 0.6; border-style: solid; background: #e8f5e9; }
+
+        /* Google Template Subpage */
+        .google-box { background: white; border-radius: 10px; padding: 15px; border: 1px solid #ddd; text-align: left; }
+        .google-logo { font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 10px; }
+        .google-logo span:nth-child(1) { color: #4285F4; } .google-logo span:nth-child(2) { color: #EA4335; }
+        .google-logo span:nth-child(3) { color: #FBBC05; } .google-logo span:nth-child(4) { color: #4285F4; }
+        .google-logo span:nth-child(5) { color: #34A853; } .google-logo span:nth-child(6) { color: #EA4335; }
+        .search-bar {
+            width: 100%; border: 1px solid #dfe1e5; padding: 10px 15px;
+            border-radius: 24px; font-size: 14px; margin-bottom: 15px; outline: none; background: #f8f9fa;
+        }
+        .photo-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-height: 200px; overflow-y: auto; }
+        .gallery-img { width: 100%; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
+
+        /* Music Screen Lyrics */
+        .lyrics-box { background: #222; color: #1DB954; padding: 15px; border-radius: 15px; font-family: monospace; font-size: 14px; margin: 15px 0; min-height: 60px; display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
 
-    <!-- SCREEN 1 -->
+    <!-- SCREEN 1: Ask Prompt -->
     <div id="screen1" class="card">
-        <h2>Hey Bestie! I wanna show you something... Do you wanna see it? 😏</h2>
-        <button class="btn-yes" onclick="nextScreen(2)">YES! 😍</button>
-        <button class="btn-no" id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">No 🙄</button>
+        <h2>Hey! I made something for you, do you wanna see it? 👀💖</h2>
+        <!-- Cute Sparkle Sticker -->
+        <div class="sticker">✨🎁✨</div> 
+        <button class="btn-yes" onclick="showScreen('screen3_yes')">Yes! 😍</button>
+        <button class="btn-no" id="noBtn" onmouseover="moveNoBtn()" onclick="moveNoBtn()">No 🙄</button>
     </div>
 
-    <!-- SCREEN 2 -->
-    <div id="screen2" class="card hidden">
-        <!-- REPLACE 'photo.jpg' WITH HER ACTUAL PHOTO NAME LATER -->
-        <img src="photo.jpg" class="profile-pic" alt="Bestie">
-        <h2>Make a wish and blow out the candle! 🎂</h2>
-        <div class="candle-container" onclick="blowCandle()">
-            <div class="flame" id="flame"></div>
-            <div class="candle"></div>
+    <!-- SCREEN 2: If No (Seriously?) -->
+    <div id="screen2_no" class="card hidden">
+        <h2>Seriously? How dare you, hmph! 😡😤</h2>
+        <!-- Cute Angry Cat Sticker placeholder -->
+        <div class="sticker">😾💢</div>
+        <button class="btn-back" onclick="showScreen('screen1')">Go Back 🥺</button>
+    </div>
+
+    <!-- SCREEN 3: If Yes (Good Gurl) -->
+    <div id="screen3_yes" class="card hidden">
+        <h2>Good gurl! 🥳🐶</h2>
+        <!-- Cute Happy Dog Sticker placeholder -->
+        <div class="sticker">🐶🎉</div>
+        <button class="btn-next" onclick="showScreen('screen4_bday')">Click to continue ✨</button>
+    </div>
+
+    <!-- SCREEN 4: Happy Birthday Template -->
+    <div id="screen4_bday" class="card">
+        <h2>🎂 HAPPY BIRTHDAY! 🎂</h2>
+        <div class="sticker">🎈👑🎈</div>
+        <p>Wishing you the most magical day ever, my best friend! You mean the absolute world to me.</p>
+        <p style="font-size: 12px; color: #ff758f; margin-top: 15px;">👉 <i>Click the button below to head to the final page!</i></p>
+        <button class="btn-next" onclick="showScreen('screen5_items')">Go to Next Page ➡️</button>
+    </div>
+
+    <!-- SCREEN 5: Three Cute Items Menu -->
+    <div id="screen5_items" class="card hidden">
+        <h2>Click on each cute item one by one! 👇✨</h2>
+        <div class="items-grid">
+            <div class="cute-item" id="item1" onclick="openItem('photo_page', 'item1')">
+                <span class="item-icon">🖼️</span>
+                <span class="item-label">Moments</span>
+            </div>
+            <div class="cute-item" id="item2" onclick="openItem('wishes_page', 'item2')">
+                <span class="item-icon">📁</span>
+                <span class="item-label">Wishes</span>
+            </div>
+            <div class="cute-item" id="item3" onclick="openItem('music_page', 'item3')">
+                <span class="item-icon">🎵</span>
+                <span class="item-label">Our Song</span>
+            </div>
         </div>
+        <button id="finalWishBtn" class="btn-next hidden" onclick="showScreen('screen6_final')">See Final Wish 💖</button>
     </div>
 
-    <!-- SCREEN 3 -->
-    <div id="screen3" class="card hidden">
-        <h2>✨ HAPPY BIRTHDAY BESTIE! ✨</h2>
-        <p style="font-size: 18px; color: #555;">You are stuck with me forever! May your day be filled with endless laughter, cake, and annoying messages from me! 🎉❤️</p>
+    <!-- SUBPAGE 1: Google Template Photos -->
+    <div id="photo_page" class="card hidden">
+        <div class="google-box">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <input type="text" class="search-bar" value="Moments of us" readonly>
+            <div class="photo-gallery">
+                <!-- It pulls the photo.jpg you upload to your github! Add copies or leave as is -->
+                <img src="photo.jpg" class="gallery-img" onerror="this.src='https://unsplash.com'">
+                <img src="photo.jpg" class="gallery-img" onerror="this.src='https://unsplash.com'">
+            </div>
+        </div>
+        <button class="btn-next" onclick="closeSubpage()">Done Menu Back 🔙</button>
+    </div>
+
+    <!-- SUBPAGE 2: Birthday Wishes & Prayers File -->
+    <div id="wishes_page" class="card hidden">
+        <h2>📁 Birthday Blessings & Prayers</h2>
+        <div class="sticker">📜🕊️</div>
+        <p style="text-align: left; background: white; padding: 15px; border-radius: 10px; border: 1px solid #ffb3c1; font-size: 14px;">
+            "I pray that this year brings you infinite joy, good health, and success in everything you do. Thank you for being the one person I can always depend on. May all your secret wishes come true today!" ✨❤️
+        </p>
+        <button class="btn-next" onclick="closeSubpage()">Done Menu Back 🔙</button>
+    </div>
+
+    <!-- SUBPAGE 3: Music Player ("You can count on me") -->
+    <div id="music_page" class="card hidden">
+        <h2>🎵 You Can Count on Me</h2>
+        <div class="sticker">📻💞</div>
+        <div class="lyrics-box" id="lyrics">🎵 "If you ever find yourself stuck in the middle of the sea, I'll sail the world to find you..." 🎵</div>
+        <button class="btn-next" onclick="closeSubpage()">Done Menu Back 🔙</button>
+    </div>
+
+    <!-- SCREEN 6: Final Cute Wish -->
+    <div id="screen6_final" class="card hidden">
+        <h2>✨ Final Special Wish ✨</h2>
+        <div class="sticker">💝🦄💝</div>
+        <p>No matter where life takes us, remember that you will always have me by your side. Happy Birthday to my favorite human asset! I love you! 💕🎉</p>
     </div>
 
     <script>
-        function nextScreen(screenNum) {
-            document.getElementById('screen1').classList.add('hidden');
-            document.getElementById('screen2').classList.remove('hidden');
-        }
+        let clickedItems = new Set();
 
-        function moveNoButton() {
-            const noBtn = document.getElementById('noBtn');
-            const x = Math.random() * (window.innerWidth - 100);
-            const y = Math.random() * (window.innerHeight - 50);
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-        }
+        // Safe Initialization: Hide everything except Screen 1 on startup
+        document.addEventListener("DOMContentLoaded", () => {
+            const screens = ['screen2_no', 'screen3_yes', 'screen4_bday', 'screen5_items', 'photo_page', 'wishes_page', 'music_page', 'screen6_final'];
+            screens.forEach(s => {
+                const el = document.getElementById(s);
+                if(el) el.classList.add('hidden');
+            });
+        });
 
-        function blowCandle() {
-            document.getElementById('flame').classList.add('hidden');
-            setTimeout(() => {
-                document.getElementById('screen2').classList.add('hidden');
-                document.getElementById('screen3').classList.remove('hidden');
-            }, 800);
-        }
-    </script>
-</body>
-</html>
+        function showScreen(screenId) {
+            // Hide all main cards & subpages
+            const allElements = document.querySelectorAll('.card');
+            allElements.forEach(el => el.classList.add('hidden'));
+            
+            // Show requested screen
+            document.getElementById(screenId).classList.remove('hidden');
+}function moveNoBtn() {// Instantly transition to angry cat screen if they attempt or hover 'No'showScreen('screen2_no');}function openItem(pageId, itemId) {clickedItems.add(itemId);document.getElementById(itemId).classList.add('completed');showScreen(pageId);if(itemId === 'music_page') {playLyricsAnimation();}}function closeSubpage() {
