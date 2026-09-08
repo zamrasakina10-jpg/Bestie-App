@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,27 +27,22 @@
             width: 90%; max-width: 380px;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.5);
-            animation: popIn 0.5s ease-out;
         }
-        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .hidden { display: none !important; }
         h2 { color: #ff477e; margin-bottom: 15px; font-size: 22px; }
         p { color: #555; line-height: 1.5; }
-        .sticker { width: 120px; height: 120px; margin: 15px auto; display: block; object-fit: contain; }
+        .sticker { font-size: 50px; margin: 15px auto; display: block; }
         
-        /* Buttons */
         button {
             padding: 12px 28px; font-size: 16px; border: none;
             border-radius: 25px; cursor: pointer; font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.2s; margin: 10px;
+            transition: transform 0.2s; margin: 10px;
         }
         .btn-yes { background: #ff477e; color: white; box-shadow: 0 4px 15px rgba(255,71,126,0.4); }
-        .btn-yes:hover { transform: scale(1.05); }
-        .btn-no { background: #6c757d; color: white; position: relative; }
+        .btn-no { background: #6c757d; color: white; }
         .btn-back { background: #4a90e2; color: white; }
         .btn-next { background: #ff758f; color: white; width: 100%; margin-top: 15px; }
 
-        /* Multi-choice Items Grid */
         .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
         .cute-item {
             background: #fff0f3; padding: 15px 5px; border-radius: 15px;
@@ -59,7 +53,6 @@
         .item-label { font-size: 11px; font-weight: bold; color: #ff477e; }
         .completed { opacity: 0.6; border-style: solid; background: #e8f5e9; }
 
-        /* Google Template Subpage */
         .google-box { background: white; border-radius: 10px; padding: 15px; border: 1px solid #ddd; text-align: left; }
         .google-logo { font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 10px; }
         .google-logo span:nth-child(1) { color: #4285F4; } .google-logo span:nth-child(2) { color: #EA4335; }
@@ -71,8 +64,6 @@
         }
         .photo-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-height: 200px; overflow-y: auto; }
         .gallery-img { width: 100%; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
-
-        /* Music Screen Lyrics */
         .lyrics-box { background: #222; color: #1DB954; padding: 15px; border-radius: 15px; font-family: monospace; font-size: 14px; margin: 15px 0; min-height: 60px; display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
@@ -81,34 +72,30 @@
     <!-- SCREEN 1: Ask Prompt -->
     <div id="screen1" class="card">
         <h2>Hey! I made something for you, do you wanna see it? 👀💖</h2>
-        <!-- Cute Sparkle Sticker -->
-        <div class="sticker">✨🎁✨</div> 
+        <div class="sticker">🎁</div> 
         <button class="btn-yes" onclick="showScreen('screen3_yes')">Yes! 😍</button>
-        <button class="btn-no" id="noBtn" onmouseover="moveNoBtn()" onclick="moveNoBtn()">No 🙄</button>
+        <button class="btn-no" onmouseover="triggerNoPrank()" onclick="triggerNoPrank()">No 🙄</button>
     </div>
 
     <!-- SCREEN 2: If No (Seriously?) -->
     <div id="screen2_no" class="card hidden">
         <h2>Seriously? How dare you, hmph! 😡😤</h2>
-        <!-- Cute Angry Cat Sticker placeholder -->
-        <div class="sticker">😾💢</div>
+        <div class="sticker">😾</div>
         <button class="btn-back" onclick="showScreen('screen1')">Go Back 🥺</button>
     </div>
 
     <!-- SCREEN 3: If Yes (Good Gurl) -->
     <div id="screen3_yes" class="card hidden">
         <h2>Good gurl! 🥳🐶</h2>
-        <!-- Cute Happy Dog Sticker placeholder -->
-        <div class="sticker">🐶🎉</div>
+        <div class="sticker">🐶</div>
         <button class="btn-next" onclick="showScreen('screen4_bday')">Click to continue ✨</button>
     </div>
 
     <!-- SCREEN 4: Happy Birthday Template -->
-    <div id="screen4_bday" class="card">
+    <div id="screen4_bday" class="card hidden">
         <h2>🎂 HAPPY BIRTHDAY! 🎂</h2>
-        <div class="sticker">🎈👑🎈</div>
+        <div class="sticker">👑</div>
         <p>Wishing you the most magical day ever, my best friend! You mean the absolute world to me.</p>
-        <p style="font-size: 12px; color: #ff758f; margin-top: 15px;">👉 <i>Click the button below to head to the final page!</i></p>
         <button class="btn-next" onclick="showScreen('screen5_items')">Go to Next Page ➡️</button>
     </div>
 
@@ -138,7 +125,6 @@
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <input type="text" class="search-bar" value="Moments of us" readonly>
             <div class="photo-gallery">
-                <!-- It pulls the photo.jpg you upload to your github! Add copies or leave as is -->
                 <img src="photo.jpg" class="gallery-img" onerror="this.src='https://unsplash.com'">
                 <img src="photo.jpg" class="gallery-img" onerror="this.src='https://unsplash.com'">
             </div>
@@ -149,45 +135,71 @@
     <!-- SUBPAGE 2: Birthday Wishes & Prayers File -->
     <div id="wishes_page" class="card hidden">
         <h2>📁 Birthday Blessings & Prayers</h2>
-        <div class="sticker">📜🕊️</div>
+        <div class="sticker">🕊️</div>
         <p style="text-align: left; background: white; padding: 15px; border-radius: 10px; border: 1px solid #ffb3c1; font-size: 14px;">
             "I pray that this year brings you infinite joy, good health, and success in everything you do. Thank you for being the one person I can always depend on. May all your secret wishes come true today!" ✨❤️
         </p>
         <button class="btn-next" onclick="closeSubpage()">Done Menu Back 🔙</button>
     </div>
 
-    <!-- SUBPAGE 3: Music Player ("You can count on me") -->
+    <!-- SUBPAGE 3: Music Player -->
     <div id="music_page" class="card hidden">
         <h2>🎵 You Can Count on Me</h2>
-        <div class="sticker">📻💞</div>
-        <div class="lyrics-box" id="lyrics">🎵 "If you ever find yourself stuck in the middle of the sea, I'll sail the world to find you..." 🎵</div>
+        <div class="sticker">📻</div>
+        <div class="lyrics-box" id="lyrics">🎵 "If you ever find yourself stuck in the middle of the sea..." 🎵</div>
         <button class="btn-next" onclick="closeSubpage()">Done Menu Back 🔙</button>
     </div>
 
     <!-- SCREEN 6: Final Cute Wish -->
     <div id="screen6_final" class="card hidden">
         <h2>✨ Final Special Wish ✨</h2>
-        <div class="sticker">💝🦄💝</div>
-        <p>No matter where life takes us, remember that you will always have me by your side. Happy Birthday to my favorite human asset! I love you! 💕🎉</p>
+        <div class="sticker">💝</div>
+        <p>No matter where life takes us, remember that you will always have me by your side. Happy Birthday to my favorite human! I love you! 💕🎉</p>
     </div>
 
     <script>
         let clickedItems = new Set();
-
-        // Safe Initialization: Hide everything except Screen 1 on startup
-        document.addEventListener("DOMContentLoaded", () => {
-            const screens = ['screen2_no', 'screen3_yes', 'screen4_bday', 'screen5_items', 'photo_page', 'wishes_page', 'music_page', 'screen6_final'];
-            screens.forEach(s => {
-                const el = document.getElementById(s);
-                if(el) el.classList.add('hidden');
-            });
-        });
+        let lyricsInterval = null;
 
         function showScreen(screenId) {
-            // Hide all main cards & subpages
-            const allElements = document.querySelectorAll('.card');
-            allElements.forEach(el => el.classList.add('hidden'));
+            // Instantly hide all screens using a loop
+            const screens = ['screen1', 'screen2_no', 'screen3_yes', 'screen4_bday', 'screen5_items', 'photo_page', 'wishes_page', 'music_page', 'screen6_final'];
+            screens.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
             
-            // Show requested screen
+            // Clear music loop if moving away from music page
+            if (screenId !== 'music_page' && lyricsInterval) {
+                clearInterval(lyricsInterval);
+            }
+
+            // Show current screen
             document.getElementById(screenId).classList.remove('hidden');
-}function moveNoBtn() {// Instantly transition to angry cat screen if they attempt or hover 'No'showScreen('screen2_no');}function openItem(pageId, itemId) {clickedItems.add(itemId);document.getElementById(itemId).classList.add('completed');showScreen(pageId);if(itemId === 'music_page') {playLyricsAnimation();}}function closeSubpage() {
+        }
+
+        function triggerNoPrank() {
+            showScreen('screen2_no');
+        }
+
+        function openItem(pageId, itemId) {
+            clickedItems.add(itemId);
+            document.getElementById(itemId).classList.add('completed');
+            showScreen(pageId);
+            
+            if(pageId === 'music_page') {
+                playLyricsAnimation();
+            }
+        }
+
+        function closeSubpage() {
+            showScreen('screen5_items');
+            if (clickedItems.size === 3) {
+                document.getElementById('finalWishBtn').classList.remove('hidden');
+            }
+        }
+
+        function playLyricsAnimation() {
+            const lyricsText = [
+                "🎵 If you ever find yourself stuck in the middle of the sea... 🌊",
+                "🎵 I'll sail the world to find you ⛵",
